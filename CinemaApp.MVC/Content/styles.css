@@ -1,0 +1,184 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    position: relative;
+}
+/*Layout*/
+
+/*Navbar*/
+
+.orange-span {
+    color: orange;
+}
+
+.navbar {
+    background-color: black;
+}
+
+
+.navbar-nav {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+
+.navbar-brand {
+    font-size: 2.0rem;
+}
+
+.nav-link {
+    color: white !important;
+    font-weight: bold;
+    transition: 0.3s linear;
+}
+
+a:hover {
+    color: orange !important;
+}
+
+/*Footer*/
+
+footer {
+    background-color: black;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    color: white !important;
+}
+
+
+/*Header INDEX*/
+
+.hero-shadow {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: -1;
+}
+
+.carousel-item {
+    position: relative;
+    height: 400px;
+    background-position: center;
+    background-size: cover;
+    z-index: 0;
+}
+
+.carousel-img-one {
+    background-image: url('/Content/Images/cinema1.jpg');
+    background-size: contain;
+}
+
+.carousel-img-two {
+    background-image: url('/Content/Images/cinema2.jpg')
+}
+
+.carousel-img-three {
+    background-image: url('/Content/Images/cinema3.jpg');
+}
+
+/*Homepage - offer*/
+
+.film-offer {
+    box-shadow: 0 0.3rem 0.5rem 0 rgba(0, 0, 0, 0.2);
+    max-width: 25rem;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+}
+
+    .film-offer > a {
+        color: inherit;
+    }
+
+        .film-offer > a:hover {
+            text-decoration: none;
+        }
+
+.offer-film-title {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+
+.offer-film-image:hover {
+    filter: grayscale(50%);
+    background-size: cover;
+}
+
+
+
+/*Reservation*/
+
+.reserving-movie-image {
+    background-image: url(/Content/Images/cinema2.jpg);
+    height: 50rem;
+}
+
+    .reserving-movie-image > p {
+        color: white;
+        text-align: center;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+
+
+#screen-position {
+    position: absolute;
+    border-top: 1rem solid orange;
+    color: orange;
+    width: 70%;
+    text-align: center;
+}
+
+#seats-picker {
+    margin-bottom: 1rem;
+}
+
+.seat-reserved {
+    background-color: red;
+}
+
+.seat-free {
+    background-color: blue;
+}
+
+    .seat-free:hover {
+        background-color: green;
+    }
+
+.seat {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 1rem 1rem 0;
+    text-align: center;
+    color: white;
+    cursor: grab;
+}
+
+.sbm {
+    font-size: 1.6rem;
+}
+
+    .sbm:hover {
+        transition-duration: 1s;
+        background-color: black !important;
+        color: orange;
+    }
+
+#reservation-panel {
+    margin-top: 5rem;
+}

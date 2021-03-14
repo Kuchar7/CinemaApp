@@ -1,0 +1,72 @@
+﻿@model List<CinemaApp.DTO.RecentMovieDTO>
+<header>
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner text-light text-center">
+
+
+
+            <div class="carousel-item carousel-img-one active">
+                <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center align-items-center">
+                    <h1 class="display-1">Lorem ipsum dolor</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                    <div class="hero-shadow"></div>
+                </div>
+            </div>
+
+            <div class="carousel-item carousel-img-two">
+                <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center align-items-center">
+                    <h1 class="display-1">Lorem ipsum dolor</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                    <div class="hero-shadow"></div>
+
+                </div>
+            </div>
+
+            <div class="carousel-item carousel-img-three">
+                <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center align-items-center">
+                    <h1 class="display-1">Lorem ipsum dolor</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                    <div class="hero-shadow"></div>
+                </div>
+            </div>
+
+
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</header>
+<main>
+    <div id="offer" class="mt-3">
+        <div class="container">
+            <h1 class="display-1 text-center">Polecane</h1>
+            <div class="all-film-offer mt-3">
+                <div class="row">
+                    @foreach (var movie in Model)
+                    {
+                        <div class="col-4">
+                            <div class="film-offer">
+                                <a href="#">
+                                    <img class="offer-film-image" src="@Url.Content(movie.ImgPath)" alt="@movie.Title" style="width:100%">
+                                    <p class="offer-film-title">@movie.Title</p>
+                                </a>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

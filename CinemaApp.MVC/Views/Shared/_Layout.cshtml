@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - kino</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/befee0995b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/Content/style.css">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark py-4 ">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <p class="mt-2"><span class="orange-span">GOOD</span> CINEMA</p>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto" id="nav-element">
+                    <a class="nav-link mr-3" id="home" href="@Url.Action("Index","Home")">Strona główna <span class="sr-only">(current)</span></a>
+                    <a class="nav-link mr-3" id="home" href="@Url.Action("About","Home")">Repertuar</a>
+                    <a class="nav-link mr-3" id="home" href="@Url.Action("About","Home")">O nas</a>
+                    <a class="nav-link mr-3" id="home" href="@Url.Action("About","Home")">Kontakt</a>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <a class="nav-link mr-3" href="">@User.Identity.Name</a>
+                        <a class="nav-link mr-3" href="@Url.Action("Logout","Account")">Wyloguj</a>
+
+                    }
+                    else
+                    {
+                        <a class="nav-link mr-3" id="home" href="@Url.Action("About","Home")">Logowanie</a>
+                        <a class="nav-link mr-3" id="home" href="@Url.Action("About","Home")">Rejestracja</a>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    <footer class="mt-3">
+        <div class="container-fluid py-1">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="p-3 text-center mb-0 mt-1"><span class="orange-span">GOOD</span> CINEMA &copy; 2020</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

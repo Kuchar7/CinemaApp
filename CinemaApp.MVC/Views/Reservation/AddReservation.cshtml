@@ -1,0 +1,107 @@
+﻿@model CinemaApp.MVC.ViewModels.ReservationVM
+
+@{
+    ViewBag.Title = "AddReservation";
+}
+
+<main>
+    <div class="container-fluid mx-0 px-0">
+        <div class="reserving-movie-image ">
+            <p class="display-1">Rezerwacja</p>
+        </div>
+    </div>
+    <div class=" container" id="reservation-panel">
+        <div class="row justify-content-around">
+            <div class="col-6">
+                <table class="table table-bordered">
+
+                    <tbody>
+                        <tr>
+                            <th scope="row"><p>Tytuł</p></th>
+                            <td style="width:50%"><p>@Html.DisplayTextFor(m => m.Title)</p></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><p>Numer sali</p></th>
+                            <td><p>@Html.DisplayTextFor(m => m.RoomNumber)</p></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><p>Początek seansu</p></th>
+                            <td>@Model.Start.ToString("g")</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><p>Cena</p></th>
+                            <td><p id="full-price">0 zł</p></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><p>Wybrane miejsca</p></th>
+                            <td><p id="miejsca">brak</p></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div id="seats-picker" class=" col-6 bg-dark d-flex align-content-center justify-content-center row">
+                <p id="screen-position" class="mt-1">Ekran</p>
+                <div class="container ">
+                    <div class="row justify-content-center " id="target">
+                    </div>
+                </div>
+            </div>
+            <button id="sbm-reservation" type="submit" class="btn btn-warning my-3 sbm" value="Zarezerwuj">Zarezerwuj</button>
+        </div>
+
+    </div>
+
+</main>
+
+<script>
+    var reservedSeats = @Html.Raw(Json.Encode(Model.ReservedSeatsList))
+
+for (var i = 1; i <='@(Model.SeatsCount)'; i++) {
+    if (reservedSeats.includes(i) == true) {
+        $('#target').append('<div id="' + i + '" class="seat seat-reserved">' + i + '</div>')
+    }
+    else {
+        $('#target').append('<div id="' + i + '" class="seat seat-free">' + i + '</div>')
+    }
+    }
+
+</script>
+<script>
+
+
+    var selectedSeats = [];
+
+    $(".seat-free").click(function (e) {
+        e.preventDefault();
+        if (!selectedSeats.includes($(this).attr('id'))) {
+            $(this).css("background-color", "green");
+            selectedSeats.push($(this).attr('id'));
+            if (document.getElementById("miejsca") != null) {
+                var d = document.getElementById("miejsca").innerHTML = selectedSeats;
+            }
+            if (document.getElementById("full-price") != null) {
+                var fullPrice = selectedSeats.length * @Html.Raw(Json.Encode(Model.BasicPrice));
+                var d = document.getElementById("full-price").innerHTML = fullPrice + " zł";
+            }
+        }
+
+    });
+
+</script>
+
+
+
+<script>
+    $("#sbm-reservation").click(function () {
+        $.ajax({
+            traditional: true,
+            type: "POST",
+            url: '@Url.Action("AddReservation")',
+            data: { 'selectedSeats': selectedSeats },
+            success: function (data) {
+                window.location.href = data;
+            }
+        });
+    });
+</script>
