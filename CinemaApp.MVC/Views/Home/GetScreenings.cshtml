@@ -1,0 +1,98 @@
+﻿@model List<CinemaApp.DTO.ScreeningDisplayDTO>
+
+
+<main>
+    <nav class="navbar navbar-light bg-light justify-content-between navbar-screening-search mt-3 mb-5">
+        <div class="container">
+            <a class="navbar-brand">Repertuar</a>
+            <form class="form-inline ">
+                <div class="input-container">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input class="form-control screening-search-form mr-3" type="text" name="datetimes" id="datetime-picker" />
+                </div>
+                <input class="form-control screening-search-form mr-3" type="search" placeholder="Tytuł filmu" id="input-search-movie" aria-label="Tytuł filmu">
+                <button class="btn btn-warning my-1 sbm" id="sbm-search-screening" type="submit">Szukaj</button>
+            </form>
+        </div>
+    </nav>
+    <div class="screenings-list">
+        <div class="container">
+            <h1 class="display-1 text-center">Seanse</h1>
+            <div class="all-film-offer mt-3">
+                <div id="target" class="row">
+                    @Html.Partial("_ScreeningListPartial")
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+@section scripts{
+
+    <script>
+        moment.locale('pl');
+        now = moment();
+        $('#datetime-picker').daterangepicker({
+            "timePicker": true,
+            "timePicker24Hour": true,
+            "timePickerIncrement": 15,
+            "autoApply": true,
+            "startDate": now,
+            "endDate": now,
+            "minDate": now,
+            "locale": {
+                format: 'DD/MM/YYYY HH:mm',
+                applyLabel: "Potwierdź",
+                cancelLabel: "Anuluj",
+            }
+        }, function (start, end, label) {
+            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        });
+    </script>
+
+    <script>
+    $("#sbm-search-screening").click(function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var starteDateTime = $("#datetime-picker").data('daterangepicker').startDate.format('DD/MM/YYYY HH:mm');
+        var endDateTime = $("#datetime-picker").data('daterangepicker').endDate.format('DD/MM/YYYY HH:mm');
+        var movieTitle = document.getElementById("input-search-movie").value;
+
+
+        $.ajax({
+            traditional: true,
+            type: "POST",
+            url: '@Url.Action("GetScreenings")',
+            data: { 'starteDateTime': starteDateTime, 'endDateTime': endDateTime, 'movieTitle': movieTitle },
+            success: function (result) {
+                $("#target").html(result);
+            }
+        });
+    })
+
+    </script>
+
+    <script>
+    $(document).ready(function (){
+            $("#input-search-movie").autocomplete({
+                source: '@Url.Action("GetMovieTitle", "Home")',
+                minLength: 1
+            });
+        });
+
+
+    </script>
+
+
+}
+
+
+
+
+
+
+
+
+
+

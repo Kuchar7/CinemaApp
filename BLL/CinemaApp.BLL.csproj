@@ -56,6 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReservationService.cs" />
     <Compile Include="RoleAuthenticationService.cs" />
+    <Compile Include="ScreeningDisplayService.cs" />
     <Compile Include="UserAuthenticationService.cs" />
   </ItemGroup>
   <ItemGroup>

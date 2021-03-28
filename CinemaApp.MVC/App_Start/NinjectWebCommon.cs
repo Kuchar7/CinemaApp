@@ -50,6 +50,7 @@ namespace CinemaApp.MVC.App_Start
                 kernel.Bind<IReservationService>().To<ReservationService>();
                 kernel.Bind<IUserAuthenticationService>().To<UserAuthenticationService>();
                 kernel.Bind<ICreateUserService>().To<CreateUserService>();
+                kernel.Bind<IScreeningDisplayService>().To<ScreeningDisplayService>();
 
 
 

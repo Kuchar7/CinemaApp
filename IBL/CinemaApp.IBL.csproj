@@ -45,6 +45,7 @@
     <Compile Include="IMovieService.cs" />
     <Compile Include="IReservationService.cs" />
     <Compile Include="IRoleAuthenticationService.cs" />
+    <Compile Include="IScreeningDisplayService.cs" />
     <Compile Include="IUserAuthenticationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

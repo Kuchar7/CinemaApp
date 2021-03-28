@@ -13,6 +13,7 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 1.6rem;
     position: relative;
+    background-color: #f7f7f7;
 }
 /*Layout*/
 
@@ -181,4 +182,14 @@ footer {
 
 #reservation-panel {
     margin-top: 5rem;
+}
+
+#datetime-picker{
+    width: 29rem !important;
+}
+.screening-search-form{
+    font-size:1.6rem !important;
+}
+#input-search-movie {
+    width: 20rem !important;
 }

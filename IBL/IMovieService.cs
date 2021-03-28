@@ -9,7 +9,9 @@ namespace IBL
 {
     public interface IMovieService
     {
-        IEnumerable<RecentMovieDTO> GetMoviesDesc(int n);
+        IEnumerable<RecentMovieDTO> GetMovieDesc(int n);
+        IEnumerable<string> GetMovieTitleByParam(string name);
+        MovieDetailsDTO GetMovieDetails(int movieId);
         
     }
 }
