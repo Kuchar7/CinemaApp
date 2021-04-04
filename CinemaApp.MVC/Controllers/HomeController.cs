@@ -10,25 +10,25 @@ namespace CinemaApp.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IMovieService movieService;
+        private readonly IMovieDisplayService movieDisplayService;
         private readonly IScreeningDisplayService screeningDisplayService;
-        public HomeController(IMovieService movieService, IScreeningDisplayService screeningDisplayService)
+        public HomeController(IMovieDisplayService movieDisplayService, IScreeningDisplayService screeningDisplayService)
         {
-            this.movieService = movieService;
+            this.movieDisplayService = movieDisplayService;
             this.screeningDisplayService = screeningDisplayService;
         }
 
         //GET Home/Index
         public ActionResult Index()
         {
-            var moviesListDesc = movieService.GetMovieDesc(6);
+            var moviesListDesc = movieDisplayService.GetMovieDesc(6);
             return View(moviesListDesc);
         }
 
         public ActionResult GetMovieDetails(int id)
         {
 
-            return View(movieService.GetMovieDetails(id));
+            return View(movieDisplayService.GetMovieDetails(id));
         }
 
         public ActionResult GetScreenings()
@@ -38,7 +38,7 @@ namespace CinemaApp.MVC.Controllers
 
         public JsonResult GetMovieTitle(string term)
         {
-            IEnumerable<string> listOfMovieTitles = movieService.GetMovieTitleByParam(term);
+            IEnumerable<string> listOfMovieTitles = movieDisplayService.GetMovieTitleByParam(term);
             return Json(listOfMovieTitles, JsonRequestBehavior.AllowGet);
         }
 

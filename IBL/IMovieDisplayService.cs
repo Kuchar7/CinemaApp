@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace IBL
 {
-    public interface IMovieService
+    public interface IMovieDisplayService
     {
         IEnumerable<RecentMovieDTO> GetMovieDesc(int n);
         IEnumerable<string> GetMovieTitleByParam(string name);
         MovieDetailsDTO GetMovieDetails(int movieId);
+        IEnumerable<AddScreaningMovieDTO> GetAllMovie();
         
     }
 }

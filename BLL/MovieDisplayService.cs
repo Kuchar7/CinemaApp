@@ -10,13 +10,24 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class MovieService : IMovieService
+    public class MovieDisplayService : IMovieDisplayService
     {
         private readonly DatabaseContext dbContext;
 
-        public MovieService()
+        public MovieDisplayService()
         {
             dbContext = new DatabaseContext();
+        }
+
+        public IEnumerable<AddScreaningMovieDTO> GetAllMovie()
+        {
+            List<AddScreaningMovieDTO> listOfMovie = new List<AddScreaningMovieDTO>();
+            foreach(var m in dbContext.Movies)
+            {
+                listOfMovie.Add(new AddScreaningMovieDTO(m.Id, m.Title));
+            }
+            var sortedListOfMovie = listOfMovie.OrderBy(x => x.Title);
+            return sortedListOfMovie;
         }
 
         public IEnumerable<RecentMovieDTO> GetMovieDesc(int n)
@@ -59,8 +70,8 @@ namespace BLL
                 DurationMin = queryMovies.Select(x => x.DurationMin).FirstOrDefault(),
                 ImgPath = queryMovies.Select(x => x.ImgPath).FirstOrDefault(),
                 Title = queryMovies.Select(x => x.Title).FirstOrDefault(),
-                ListOfGenres = queryMovies.Select(x => x.Name).ToList(),
-                ListOfUpcomingScreenings = upcomingScreenings
+                Genres = string.Join(", ", queryMovies.Select(x => x.Name).ToList()),
+                ListOfUpcomingScreenings = upcomingScreenings.OrderBy(x => x.StartDateTime).ToList()
 
             };
             return movieDetailsDTO;
@@ -79,5 +90,9 @@ namespace BLL
             List<string> listOfMovieTitles = new List<string>(query);
             return listOfMovieTitles;
         }
+
+
+
+
     }
 }

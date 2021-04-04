@@ -1,57 +1,44 @@
 ﻿@model CinemaApp.DTO.MovieDetailsDTO
 
-<div>
-    <h4>MovieDetailsDTO</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+<main>
+    <div class="container-fluid mx-0 px-0">
+        <div class="reserving-movie-image ">
+            <p class="display-1">Opis filmu „@Model.Title”</p>
+        </div>
+    </div>
+    <div class="container d-flex justify-content-center mt-4">
+        <table class="table table-bordered w-100">
+            <tbody>
+                <tr>
+                    <th scope="row"><p>Tytuł</p></th>
+                    <td style="width:50%"><p>@Html.DisplayFor(item => Model.Title)</p></td>
+                </tr>
+                <tr>
+                    <th scope="row"><p>Czas trwania w minutach</p></th>
+                    <td style="width:50%"><p>@Html.DisplayFor(item => Model.DurationMin)</p></td>
+                </tr>
+                <tr>
+                    <th scope="row"><p>Gatunek</p></th>
+                    <td><p>@Html.DisplayFor(item => Model.Genres)</p></td>
+                </tr>
+                <tr>
+                    <th scope="row"><p>Opis</p></th>
+                    <td><p>@Html.DisplayFor(item => Model.Description)</p></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DurationMin)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DurationMin)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImgPath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImgPath)
-        </dd>
-        <dd>
-            <p>
-                @foreach (var d in Model.ListOfGenres)
-                {
-                    @d
-                }
-            </p>
-        </dd>
-
-        <dd>
-            @foreach (var d in Model.ListOfUpcomingScreenings)
+        <h1 class="font-weight-light text-center  mt-4 mb-3 border-bottom">Najbliższe seanse</h1>
+        <div class="container row justify-content-center">
+            @foreach (var s in Model.ListOfUpcomingScreenings)
             {
-                <p>@d.StartDateTime</p>
+                <a class="text-center text-decoration-none col-md-4 col-lg-2" href="@Url.Action("AddReservation", "Reservation", new {id = s.ScreeningId })">@s.StartDateTime</a>
             }
-        </dd>
+        </div>
+    </div>
+</main>
 
-
-    </dl>
-</div>
 

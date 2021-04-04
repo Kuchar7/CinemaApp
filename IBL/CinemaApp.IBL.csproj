@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICreateUserService.cs" />
-    <Compile Include="IMovieService.cs" />
+    <Compile Include="IMovieDisplayService.cs" />
     <Compile Include="IReservationService.cs" />
     <Compile Include="IRoleAuthenticationService.cs" />
+    <Compile Include="IRoomDisplayService.cs" />
     <Compile Include="IScreeningDisplayService.cs" />
+    <Compile Include="IScreeningManageService.cs" />
     <Compile Include="IUserAuthenticationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -46,11 +46,13 @@ namespace CinemaApp.MVC.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
-                kernel.Bind<IMovieService>().To<MovieService>();
+                kernel.Bind<IMovieDisplayService>().To<MovieDisplayService>();
                 kernel.Bind<IReservationService>().To<ReservationService>();
                 kernel.Bind<IUserAuthenticationService>().To<UserAuthenticationService>();
                 kernel.Bind<ICreateUserService>().To<CreateUserService>();
                 kernel.Bind<IScreeningDisplayService>().To<ScreeningDisplayService>();
+                kernel.Bind<IScreeningManageService>().To<ScreeningManageService>();
+                kernel.Bind<IRoomDisplayService>().To<RoomDisplayService>();
 
 
 

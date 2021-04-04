@@ -41,13 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HelperClass\SelectedSeat.cs" />
-    <Compile Include="HelperClass\UpcomingScreening.cs" />
+    <Compile Include="AddScreaningMovieDTO.cs" />
+    <Compile Include="AddScreeningDTO.cs" />
+    <Compile Include="CompositeClasses\SelectedSeat.cs" />
+    <Compile Include="CompositeClasses\UpcomingScreening.cs" />
     <Compile Include="MovieDetailsDTO.cs" />
     <Compile Include="RecentMovieDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReservationDTO.cs" />
     <Compile Include="CreateUserDTO.cs" />
+    <Compile Include="AddScreaningRoomDTO.cs" />
     <Compile Include="ScreeningDisplayDTO.cs" />
   </ItemGroup>
   <ItemGroup>

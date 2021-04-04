@@ -13,14 +13,14 @@ namespace CinemaApp.DTO
         {
         }
 
-        public MovieDetailsDTO(int id, string title, int durationTime, string description, string imgPath, List<string> listOfGenres, List<UpcomingScreening> listOfUpcomingScreenings)
+        public MovieDetailsDTO(int id, string title, int durationTime, string description, string imgPath, string genres, List<UpcomingScreening> listOfUpcomingScreenings)
         {
             this.Id = id;
             this.Title = title;
             this.DurationMin = durationTime;
             this.Description = description;
             this.ImgPath = imgPath;
-            this.ListOfGenres = listOfGenres;
+            this.Genres = genres;
             this.ListOfUpcomingScreenings = listOfUpcomingScreenings;
         }
         public int Id { get; set; }
@@ -28,7 +28,7 @@ namespace CinemaApp.DTO
         public int DurationMin { get; set; }
         public string Description { get; set; }
         public string ImgPath { get; set; }
-        public List<string> ListOfGenres { get; set; }
+        public string Genres { get; set; }
         public List<UpcomingScreening> ListOfUpcomingScreenings { get; set; }
     }
 }
