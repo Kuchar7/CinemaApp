@@ -53,6 +53,7 @@ namespace CinemaApp.MVC.App_Start
                 kernel.Bind<IScreeningDisplayService>().To<ScreeningDisplayService>();
                 kernel.Bind<IScreeningManageService>().To<ScreeningManageService>();
                 kernel.Bind<IRoomDisplayService>().To<RoomDisplayService>();
+                kernel.Bind<IScreeningValidationService>().To<ScreeningValidationService>();
 
 
 

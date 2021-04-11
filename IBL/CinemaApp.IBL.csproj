@@ -48,6 +48,7 @@
     <Compile Include="IRoomDisplayService.cs" />
     <Compile Include="IScreeningDisplayService.cs" />
     <Compile Include="IScreeningManageService.cs" />
+    <Compile Include="IScreeningValidationService.cs" />
     <Compile Include="IUserAuthenticationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

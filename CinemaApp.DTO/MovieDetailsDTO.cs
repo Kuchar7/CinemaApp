@@ -1,4 +1,5 @@
-﻿using CinemaApp.DTO.HelperClass;
+﻿
+using CinemaApp.DTO.HelperClass;
 using System;
 using System.Collections.Generic;
 using System.Linq;

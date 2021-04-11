@@ -59,6 +59,7 @@
     <Compile Include="RoomDisplayService.cs" />
     <Compile Include="ScreeningDisplayService.cs" />
     <Compile Include="ScreeningManageService.cs" />
+    <Compile Include="ScreeningValidationService.cs" />
     <Compile Include="UserAuthenticationService.cs" />
   </ItemGroup>
   <ItemGroup>

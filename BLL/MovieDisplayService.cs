@@ -24,7 +24,7 @@ namespace BLL
             List<AddScreaningMovieDTO> listOfMovie = new List<AddScreaningMovieDTO>();
             foreach(var m in dbContext.Movies)
             {
-                listOfMovie.Add(new AddScreaningMovieDTO(m.Id, m.Title));
+                listOfMovie.Add(new AddScreaningMovieDTO(m.Id, m.Title, m.DurationMin));
             }
             var sortedListOfMovie = listOfMovie.OrderBy(x => x.Title);
             return sortedListOfMovie;
@@ -77,6 +77,12 @@ namespace BLL
             return movieDetailsDTO;
             
 
+        }
+
+        public int GetMovieLengthById(int movieId)
+        {
+            int movieLength = dbContext.Movies.Where(x => x.Id == movieId).Select(x => x.DurationMin).FirstOrDefault();
+            return movieLength;
         }
 
         public IEnumerable<string> GetMovieTitleByParam(string name)

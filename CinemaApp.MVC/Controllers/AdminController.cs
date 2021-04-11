@@ -15,12 +15,14 @@ namespace CinemaApp.MVC.Controllers
         readonly IScreeningManageService screeningManageService;
         readonly IRoomDisplayService roomDisplayService;
         readonly IMovieDisplayService movieDisplayService;
-        public AdminController(IScreeningManageService screeningManageService, IRoomDisplayService roomManageService,
-            IMovieDisplayService movieDisplayService)
+        readonly IScreeningValidationService screeningValidationService;
+        public AdminController(IScreeningManageService screeningManageService, IRoomDisplayService roomDisplayService,
+            IMovieDisplayService movieDisplayService, IScreeningValidationService screeningValidationService)
         {
             this.screeningManageService = screeningManageService;
-            this.roomDisplayService = roomManageService;
+            this.roomDisplayService = roomDisplayService;
             this.movieDisplayService = movieDisplayService;
+            this.screeningValidationService = screeningValidationService;
         }
 
         [Authorize(Roles = "Admin")]
@@ -34,7 +36,7 @@ namespace CinemaApp.MVC.Controllers
         {
             AddScreeningVM addScreeningVM = new AddScreeningVM
             {
-                listOfMovies = movieDisplayService.GetAllMovie().ToList().ConvertAll(x => new AddScreeningMovie (x.Id, x.Title)),
+                listOfMovies = movieDisplayService.GetAllMovie().ToList().ConvertAll(x => new AddScreeningMovie (x.Id, x.Title, x.Length)),
                 listOfRooms = roomDisplayService.GetAllRooms().ToList().ConvertAll(x => new AddScreeningRoom (x.Id, x.Number))
             };
             return View(addScreeningVM);
@@ -43,16 +45,23 @@ namespace CinemaApp.MVC.Controllers
         [HttpPost]
         public ActionResult AddScreening(AddScreeningVM addScreeningVM)
         {
-            if (ModelState.IsValid)
-            {
-                AddScreeningDTO addScreeningDTO = new AddScreeningDTO(addScreeningVM.Start, addScreeningVM.Price,
-                    addScreeningVM.MovieId, addScreeningVM.RoomId);
-                screeningManageService.AddScreening(addScreeningDTO);
-                RedirectToAction("AddScreening");
-            }
-            addScreeningVM.listOfMovies = movieDisplayService.GetAllMovie().ToList().ConvertAll(x => new AddScreeningMovie(x.Id, x.Title));
+            addScreeningVM.listOfMovies = movieDisplayService.GetAllMovie().ToList().ConvertAll(x => new AddScreeningMovie(x.Id, x.Title, x.Length));
             addScreeningVM.listOfRooms = roomDisplayService.GetAllRooms().ToList().ConvertAll(x => new AddScreeningRoom(x.Id, x.Number));
-            return View(addScreeningVM);
+            addScreeningVM.MovieLength = movieDisplayService.GetMovieLengthById(addScreeningVM.MovieId);
+            if (!ModelState.IsValid)
+            {       
+                return View(addScreeningVM);          
+            }
+            if (screeningValidationService.IsRoomUnavailable(addScreeningVM.Start, addScreeningVM.RoomId, addScreeningVM.MovieLength)){
+                ModelState.AddModelError("", "Nieprawidłowa data rozpoczęcia seansu. Zachowana musi zostać 15 minutowa przerwa między seansami!");
+                return View(addScreeningVM);
+            }
+            AddScreeningDTO addScreeningDTO = new AddScreeningDTO(addScreeningVM.Start, addScreeningVM.Price,
+                addScreeningVM.MovieId, addScreeningVM.RoomId);
+            screeningManageService.AddScreening(addScreeningDTO);
+            return RedirectToAction("AddScreening");
+
+
         }
     }
 }

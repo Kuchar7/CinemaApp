@@ -20,6 +20,7 @@ namespace CinemaApp.MVC.ViewModels
         [DataType(DataType.Currency)]
         [Range(0.01, 99999999, ErrorMessage ="Cena musi być większa od 0!")]
         public decimal Price { get; set; }
+        public int MovieLength { get; set; }
         public List<AddScreeningRoom> listOfRooms { get; set; }
         public List<AddScreeningMovie> listOfMovies { get; set; }
 

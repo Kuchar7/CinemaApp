@@ -13,6 +13,7 @@ namespace IBL
         IEnumerable<string> GetMovieTitleByParam(string name);
         MovieDetailsDTO GetMovieDetails(int movieId);
         IEnumerable<AddScreaningMovieDTO> GetAllMovie();
+        int GetMovieLengthById(int movieId);
         
     }
 }

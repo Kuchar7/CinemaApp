@@ -8,6 +8,8 @@
         </div>
     </div>
 
+
+
     <div class="d-flex justify-content-center row">
 
         @using (Html.BeginForm("AddScreening", "Admin", FormMethod.Post, new { @class = " col-lg-6 col-xl-6 justify-content-center row mt-3", role = "form" }))
@@ -21,7 +23,7 @@
                         <i class="fas fa-signature"></i>
                     </span>
                 </div>
-                @Html.DropDownListFor(Model => Model.MovieId, new SelectList(Model.listOfMovies, "Id", "Title"), "Wybierz film", new { @class = "form-control" })
+                @Html.DropDownListFor(Model => Model.MovieId, new SelectList(Model.listOfMovies, "Id", "TitleMovieLength"), "Wybierz film", new { @class = "form-control" })
             </div>
             <div class="input-group input-group-lg mb-3 col-md-4 col-lg-4">
                 <div class="input-group-prepend">
@@ -37,7 +39,7 @@
                         <i class="fas fa-at"></i>
                     </span>
                 </div>
-                @Html.TextBoxFor(Model => Model.Start, new {@id = "datetime-picker-add-screening", @class = "form-control" })
+                @Html.TextBoxFor(Model => Model.Start, new { @id = "datetime-picker-add-screening", @class = "form-control" })
 
             </div>
 
@@ -55,6 +57,7 @@
                 <button type="submit" class="btn btn-warning my-3 sbm">Dodaj</button>
             </div>
             @Html.ValidationSummary("", new { @class = "text-danger" })
+            @*@Html.ValidationMessage("RoomAvailableError")*@
 
 
         }
