@@ -24,7 +24,7 @@ namespace BLL
             List<AddScreaningMovieDTO> listOfMovie = new List<AddScreaningMovieDTO>();
             foreach(var m in dbContext.Movies)
             {
-                listOfMovie.Add(new AddScreaningMovieDTO(m.Id, m.Title, m.DurationMin));
+                listOfMovie.Add(new AddScreaningMovieDTO(m.Id, m.Title, m.LengthMin));
             }
             var sortedListOfMovie = listOfMovie.OrderBy(x => x.Title);
             return sortedListOfMovie;
@@ -50,7 +50,7 @@ namespace BLL
                               join mG in dbContext.MoviesGenres on m.Id equals mG.MovieId
                               join g in dbContext.Genres on mG.GenreId equals g.Id
                               where (m.Id == movieId)
-                              select new { m.Id, m.Title, m.DurationMin, m.Description, m.ImgPath, g.Name};
+                              select new { m.Id, m.Title, m.LengthMin, m.Description, m.ImgPath, g.Name};
             var queryScreenings = from s in dbContext.Screenings
                                   where (s.MovieId == movieId) && (s.Start > DateTime.Now)
                                   select new { s.Id, s.Start };
@@ -67,7 +67,7 @@ namespace BLL
             {
                 Id = queryMovies.Select(x => x.Id).FirstOrDefault(),
                 Description = queryMovies.Select(x => x.Description).FirstOrDefault(),
-                DurationMin = queryMovies.Select(x => x.DurationMin).FirstOrDefault(),
+                DurationMin = queryMovies.Select(x => x.LengthMin).FirstOrDefault(),
                 ImgPath = queryMovies.Select(x => x.ImgPath).FirstOrDefault(),
                 Title = queryMovies.Select(x => x.Title).FirstOrDefault(),
                 Genres = string.Join(", ", queryMovies.Select(x => x.Name).ToList()),
@@ -81,7 +81,7 @@ namespace BLL
 
         public int GetMovieLengthById(int movieId)
         {
-            int movieLength = dbContext.Movies.Where(x => x.Id == movieId).Select(x => x.DurationMin).FirstOrDefault();
+            int movieLength = dbContext.Movies.Where(x => x.Id == movieId).Select(x => x.LengthMin).FirstOrDefault();
             return movieLength;
         }
 

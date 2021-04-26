@@ -19,6 +19,9 @@ namespace Entities
         [ForeignKey("User")]
         public int UserId { get; set; }
         public virtual User User { get; set; }
+        [ForeignKey("ReservationStatus")]
+        public int StatusId { get; set; }
+        public virtual ReservationStatus ReservationStatus { get; set; }
         public virtual ICollection<ReservedSeat> ReservedSeats { get; set; }
     }
 }

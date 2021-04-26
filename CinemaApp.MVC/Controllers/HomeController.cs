@@ -48,11 +48,11 @@ namespace CinemaApp.MVC.Controllers
             List<ScreeningDisplayDTO> screeningsList = new List<ScreeningDisplayDTO>();
             if (String.IsNullOrEmpty(movieTitle))
             {
-                screeningsList = screeningDisplayService.GetScreeningByParametr(starteDateTime, endDateTime).ToList();
+                screeningsList = screeningDisplayService.GetScreening(starteDateTime, endDateTime).ToList();
             }
             else
             {
-                screeningsList = screeningDisplayService.GetScreeningByParametr(starteDateTime, endDateTime, movieTitle).ToList();
+                screeningsList = screeningDisplayService.GetScreening(starteDateTime, endDateTime, movieTitle).ToList();
 
             }
             return PartialView("_ScreeningListPartial", screeningsList);

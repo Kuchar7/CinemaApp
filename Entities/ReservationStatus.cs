@@ -8,18 +8,14 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    [Table("Movies")]
-    public class Movie
+    [Table("ReservationStatuses")]
+    public class ReservationStatus
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Title { get; set; }
-        public int LengthMin { get; set; }
-        public string Description { get; set; }
-        public string ImgPath { get; set; }
-        public DateTime AddDateTime { get; set; }
+        public string Name { get; set; }
+        public ICollection<Reservation> Reservations { get; set; }
 
-        public virtual ICollection<Screening> Screenings { get; set; }
     }
 }

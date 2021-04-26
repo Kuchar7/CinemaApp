@@ -23,10 +23,12 @@ namespace BLL
             DateTime roomUnavailableEnd = startDateTime.Add(new TimeSpan(0, (15 + movieLength), 0));
             var queryResult = (from s in dbContext.Screenings
                                where ((s.RoomId == roomId) && (s.Start >= roomUnavailableEnd))
-                               || (((DbFunctions.AddMinutes(s.Start, s.Movie.DurationMin)) >= roomUnavailableStart) && (s.RoomId == roomId))
+                               || (((DbFunctions.AddMinutes(s.Start, s.Movie.LengthMin)) >= roomUnavailableStart) && (s.RoomId == roomId))
                                select s).Any();
             return queryResult;
 
         }
     }
 }
+
+//w tej klasie mają być tylko metody dla walidacji zwracające bool'a

@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddMovieDTO.cs" />
+    <Compile Include="GenreDTO.cs" />
     <Compile Include="AddScreaningMovieDTO.cs" />
     <Compile Include="AddScreeningDTO.cs" />
     <Compile Include="CompositeClasses\SelectedSeat.cs" />

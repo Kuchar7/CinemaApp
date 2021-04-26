@@ -17,7 +17,7 @@ namespace BLL
             this.dbContext = dbContext;
         }
 
-        public IEnumerable<ScreeningDisplayDTO> GetScreeningByParametr(string startDT, string endDT)
+        public IEnumerable<ScreeningDisplayDTO> GetScreening(string startDT, string endDT)
         {
             DateTime starteDateTime = Convert.ToDateTime(startDT);
             DateTime endDateTime = Convert.ToDateTime(endDT);
@@ -48,7 +48,7 @@ namespace BLL
             return listScreeningDisplayDTO;
         }
 
-        public IEnumerable<ScreeningDisplayDTO> GetScreeningByParametr(string startDT, string endDT, string movieTitle)
+        public IEnumerable<ScreeningDisplayDTO> GetScreening(string startDT, string endDT, string movieTitle)
         {
             DateTime starteDateTime = Convert.ToDateTime(startDT);
             DateTime endDateTime = Convert.ToDateTime(endDT);
@@ -80,3 +80,4 @@ namespace BLL
         }
     }
 }
+//w tej klasie mam rózne metody wyszukujące po bazie danych zwracają albo obiekt albo liste obiektów

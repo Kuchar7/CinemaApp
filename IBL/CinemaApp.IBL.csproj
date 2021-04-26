@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,13 +43,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICreateUserService.cs" />
+    <Compile Include="IGenreDisplayService.cs" />
     <Compile Include="IMovieDisplayService.cs" />
+    <Compile Include="IMovieManageService.cs" />
     <Compile Include="IReservationService.cs" />
     <Compile Include="IRoleAuthenticationService.cs" />
     <Compile Include="IRoomDisplayService.cs" />
     <Compile Include="IScreeningDisplayService.cs" />
     <Compile Include="IScreeningManageService.cs" />
     <Compile Include="IScreeningValidationService.cs" />
+    <Compile Include="IUploadImage.cs" />
     <Compile Include="IUserAuthenticationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

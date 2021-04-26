@@ -9,7 +9,7 @@ namespace IBL
 {
     public interface IScreeningDisplayService
     {
-        IEnumerable<ScreeningDisplayDTO> GetScreeningByParametr(string starteDateTime, string endDateTime);
-        IEnumerable<ScreeningDisplayDTO> GetScreeningByParametr(string starteDateTime, string endDateTime, string movieTitle);
+        IEnumerable<ScreeningDisplayDTO> GetScreening(string starteDateTime, string endDateTime);
+        IEnumerable<ScreeningDisplayDTO> GetScreening(string starteDateTime, string endDateTime, string movieTitle);
     }
 }

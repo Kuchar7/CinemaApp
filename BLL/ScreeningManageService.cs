@@ -36,3 +36,5 @@ namespace BLL
         }
     }
 }
+
+//w tej klasie mam metody do zapisywania w bazie danych, edycji, usuwania

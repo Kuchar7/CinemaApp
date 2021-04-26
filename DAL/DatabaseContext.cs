@@ -25,6 +25,7 @@ namespace DAL
         public virtual DbSet<ReservedSeat> ReservedSeats { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<Screening> Screenings { get; set; }
+        public virtual DbSet<ReservationStatus> ReservationStatuses { get; set; }
     }
 
 
