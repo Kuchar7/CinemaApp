@@ -47,7 +47,8 @@ namespace CinemaApp.MVC.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 kernel.Bind<IMovieDisplayService>().To<MovieDisplayService>();
-                kernel.Bind<IReservationService>().To<ReservationService>();
+                kernel.Bind<IReservationManageService>().To<ReservationManageService>();
+                kernel.Bind<IReservationDisplayService>().To<ReservationDisplayService>();
                 kernel.Bind<IUserAuthenticationService>().To<UserAuthenticationService>();
                 kernel.Bind<ICreateUserService>().To<CreateUserService>();
                 kernel.Bind<IScreeningDisplayService>().To<ScreeningDisplayService>();
@@ -57,6 +58,7 @@ namespace CinemaApp.MVC.App_Start
                 kernel.Bind<IMovieManageService>().To<MovieManageService>();
                 kernel.Bind<IGenreDisplayService>().To<GenreDisplayService>();
                 kernel.Bind<IUploadImage>().To<UploadImage>();
+                kernel.Bind<IReservationValidationService>().To<ReservationValidationService>();
 
 
 

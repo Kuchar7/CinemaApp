@@ -17,6 +17,7 @@ namespace CinemaApp.MVC.Controllers
             this.movieDisplayService = movieDisplayService;
             this.screeningDisplayService = screeningDisplayService;
         }
+        public HomeController() { }
 
         //GET Home/Index
         public ActionResult Index()

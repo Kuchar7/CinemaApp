@@ -46,7 +46,9 @@
     <Compile Include="IGenreDisplayService.cs" />
     <Compile Include="IMovieDisplayService.cs" />
     <Compile Include="IMovieManageService.cs" />
-    <Compile Include="IReservationService.cs" />
+    <Compile Include="IReservationDisplayService.cs" />
+    <Compile Include="IReservationManageService.cs" />
+    <Compile Include="IReservationValidationService.cs" />
     <Compile Include="IRoleAuthenticationService.cs" />
     <Compile Include="IRoomDisplayService.cs" />
     <Compile Include="IScreeningDisplayService.cs" />
@@ -60,10 +62,6 @@
     <ProjectReference Include="..\CinemaApp.DTO\CinemaApp.DTO.csproj">
       <Project>{7a9964a3-c1df-4559-b835-0347c903dd03}</Project>
       <Name>CinemaApp.DTO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Entities\CinemaApp.Entities.csproj">
-      <Project>{675909d1-76f9-4d7d-8103-220130a1ebc9}</Project>
-      <Name>CinemaApp.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

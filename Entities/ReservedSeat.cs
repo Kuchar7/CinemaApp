@@ -20,12 +20,7 @@ namespace Entities
         [ForeignKey("Reservation")]
         public int ReservationId { get; set; }
         public virtual Reservation Reservation { get; set; }
-        [ForeignKey("Screening")]
-        public int ScreeningId { get; set; }
-        public virtual Screening Screening { get; set; }
-        [ForeignKey("Room")]
-        public int? RoomId { get; set; }
-        public virtual Room Room { get; set; }
+
 
     }
 }

@@ -45,15 +45,15 @@
     <Compile Include="GenreDTO.cs" />
     <Compile Include="AddScreaningMovieDTO.cs" />
     <Compile Include="AddScreeningDTO.cs" />
-    <Compile Include="CompositeClasses\SelectedSeat.cs" />
     <Compile Include="CompositeClasses\UpcomingScreening.cs" />
     <Compile Include="MovieDetailsDTO.cs" />
     <Compile Include="RecentMovieDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReservationDTO.cs" />
+    <Compile Include="AddReservationDTO.cs" />
     <Compile Include="CreateUserDTO.cs" />
     <Compile Include="AddScreaningRoomDTO.cs" />
     <Compile Include="ScreeningDisplayDTO.cs" />
+    <Compile Include="UserReservationDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

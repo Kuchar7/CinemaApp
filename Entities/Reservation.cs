@@ -14,6 +14,7 @@ namespace Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        public decimal Price { get; set; }
 
 
         [ForeignKey("User")]
@@ -22,6 +23,9 @@ namespace Entities
         [ForeignKey("ReservationStatus")]
         public int StatusId { get; set; }
         public virtual ReservationStatus ReservationStatus { get; set; }
+        [ForeignKey("Screening")]
+        public int ScreeningId { get; set; }
+        public virtual Screening Screening { get; set; }
         public virtual ICollection<ReservedSeat> ReservedSeats { get; set; }
     }
 }

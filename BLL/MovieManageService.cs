@@ -18,6 +18,14 @@ namespace BLL
             this.dbContext = databaseContext;
         }
 
+        public AddMovieDTO AddMovieDTO
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public int AddMovie(AddMovieDTO addMovieDTO)
         {
             Movie movie = new Movie
@@ -26,7 +34,7 @@ namespace BLL
                 LengthMin = addMovieDTO.Length,
                 Description = addMovieDTO.Description,
                 ImgPath = addMovieDTO.ImgPath,
-                AddDateTime = DateTime.Now                 
+                AddDateTime = DateTime.Now
             };
             dbContext.Movies.Add(movie);
 

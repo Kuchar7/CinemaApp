@@ -18,6 +18,5 @@ namespace Entities
         public int Number { get; set; }
         public int Capacity { get; set; }
         public virtual ICollection<Screening> Screenings { get; set; }
-        public virtual ICollection<ReservedSeat> ReservedSeats { get; set; }
     }
 }

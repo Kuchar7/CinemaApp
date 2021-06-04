@@ -1,4 +1,4 @@
-﻿@model CinemaApp.MVC.ViewModels.ReservationVM
+﻿@model CinemaApp.MVC.ViewModels.AddReservationVM
 
 @{
     ViewBag.Title = "AddReservation";
@@ -47,7 +47,10 @@
                     </div>
                 </div>
             </div>
-            <button id="sbm-reservation" type="submit" class="btn btn-warning my-3 sbm" value="Zarezerwuj">Zarezerwuj</button>
+            <div class="ml-1 mt-1">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger ml-5" })
+            </div>
+            <button id="sbm-reservation" class="btn btn-warning my-3 sbm" value="Zarezerwuj">Zarezerwuj</button>
         </div>
 
     </div>
@@ -57,7 +60,7 @@
 <script>
     var reservedSeats = @Html.Raw(Json.Encode(Model.ReservedSeatsList))
 
-for (var i = 1; i <='@(Model.SeatsCount)'; i++) {
+for (var i = 1; i <='@(Model.SeatsAmount)'; i++) {
     if (reservedSeats.includes(i) == true) {
         $('#target').append('<div id="' + i + '" class="seat seat-reserved">' + i + '</div>')
     }
@@ -77,6 +80,7 @@ for (var i = 1; i <='@(Model.SeatsCount)'; i++) {
         if (!selectedSeats.includes($(this).attr('id'))) {
             $(this).css("background-color", "green");
             selectedSeats.push($(this).attr('id'));
+            console.log(selectedSeats)
             if (document.getElementById("miejsca") != null) {
                 var d = document.getElementById("miejsca").innerHTML = selectedSeats;
             }
@@ -93,14 +97,17 @@ for (var i = 1; i <='@(Model.SeatsCount)'; i++) {
 
 
 <script>
-    $("#sbm-reservation").click(function () {
+    $("#sbm-reservation").click(function (e) {
+        e.preventDefault();
         $.ajax({
-            traditional: true,
+            url: '@Url.Action("AddReservation", "Reservation")',
             type: "POST",
-            url: '@Url.Action("AddReservation")',
-            data: { 'selectedSeats': selectedSeats },
+            data: { selectedSeats: selectedSeats, Title: "@Model.Title"},
             success: function (data) {
-                window.location.href = data;
+                alert("sent data to controller")
+            },
+            error: function (data) {
+                alert("Error " + data.responseText);
             }
         });
     });

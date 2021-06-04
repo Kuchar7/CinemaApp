@@ -15,7 +15,7 @@ namespace Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public DateTime Start { get; set; }
-        public decimal Price { get; set; }
+        public decimal BasicPrice { get; set; }
 
         [ForeignKey("Movie")]
         public int MovieId { get; set; }
@@ -24,5 +24,6 @@ namespace Entities
         [ForeignKey("Room")]
         public int RoomId { get; set; }
         public virtual Room Room { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

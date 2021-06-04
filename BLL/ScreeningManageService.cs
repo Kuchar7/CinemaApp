@@ -28,7 +28,7 @@ namespace BLL
             {
                 MovieId = addScreeningDTO.MovieId,
                 RoomId = addScreeningDTO.RoomId,
-                Price = addScreeningDTO.Price,
+                BasicPrice = addScreeningDTO.Price,
                 Start = addScreeningDTO.Start
             };
             dbContext.Screenings.Add(newScreening);
