@@ -33,13 +33,14 @@
     <script>
         moment.locale('pl');
         now = moment();
+        endDate = moment().add(24, 'hours');
         $('#datetime-picker').daterangepicker({
             "timePicker": true,
             "timePicker24Hour": true,
             "timePickerIncrement": 15,
             "autoApply": true,
             "startDate": now,
-            "endDate": now,
+            "endDate": endDate,
             "minDate": now,
             "locale": {
                 format: 'DD/MM/YYYY HH:mm',

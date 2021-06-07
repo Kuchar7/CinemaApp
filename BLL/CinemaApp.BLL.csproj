@@ -52,9 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="CreateUserService.cs" />
+    <Compile Include="UserManageService.cs" />
     <Compile Include="GenreDisplayService.cs" />
+    <Compile Include="GenreManageService.cs" />
+    <Compile Include="GenreValidationService.cs" />
     <Compile Include="MovieDisplayService.cs" />
     <Compile Include="MovieManageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,11 +64,14 @@
     <Compile Include="ReservationValidationService.cs" />
     <Compile Include="RoleAuthenticationService.cs" />
     <Compile Include="RoomDisplayService.cs" />
+    <Compile Include="RoomManageService.cs" />
+    <Compile Include="RoomValidationService.cs" />
     <Compile Include="ScreeningDisplayService.cs" />
     <Compile Include="ScreeningManageService.cs" />
     <Compile Include="ScreeningValidationService.cs" />
     <Compile Include="UploadImage.cs" />
     <Compile Include="UserAuthenticationService.cs" />
+    <Compile Include="UserDisplayService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CinemaApp.DTO\CinemaApp.DTO.csproj">

@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace IBL
 {
-    public interface ICreateUserService
+    public interface IUserManageService
     {
         bool IsAvailableEmailAdress(string emailAdress);
-        int CreateUser(CreateUserDTO createUserDTO);
+        int AddUser(CreateUserDTO createUserDTO);
+        int EditUserData(EditUserDataDTO editUserDataDTO);
     }
 }

@@ -42,8 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICreateUserService.cs" />
+    <Compile Include="IUserManageService.cs" />
     <Compile Include="IGenreDisplayService.cs" />
+    <Compile Include="IGenreManageService.cs" />
+    <Compile Include="IGenreValidationService.cs" />
     <Compile Include="IMovieDisplayService.cs" />
     <Compile Include="IMovieManageService.cs" />
     <Compile Include="IReservationDisplayService.cs" />
@@ -51,11 +53,14 @@
     <Compile Include="IReservationValidationService.cs" />
     <Compile Include="IRoleAuthenticationService.cs" />
     <Compile Include="IRoomDisplayService.cs" />
+    <Compile Include="IRoomManageService.cs" />
+    <Compile Include="IRoomValidationService.cs" />
     <Compile Include="IScreeningDisplayService.cs" />
     <Compile Include="IScreeningManageService.cs" />
     <Compile Include="IScreeningValidationService.cs" />
     <Compile Include="IUploadImage.cs" />
     <Compile Include="IUserAuthenticationService.cs" />
+    <Compile Include="IUserDisplayService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

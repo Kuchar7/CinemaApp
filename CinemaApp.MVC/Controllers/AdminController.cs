@@ -22,9 +22,15 @@ namespace CinemaApp.MVC.Controllers
         readonly IGenreDisplayService genreDisplayService;
         readonly IMovieManageService movieManageService;
         readonly IUploadImage uploadImage;
+        readonly IGenreManageService genreManageService;
+        readonly IGenreValidationService genreValidationService;
+        readonly IRoomManageService roomManageService;
+        readonly IRoomValidationService roomValidationService;
         public AdminController(IScreeningManageService screeningManageService, IRoomDisplayService roomDisplayService,
             IMovieDisplayService movieDisplayService, IScreeningValidationService screeningValidationService,
-            IGenreDisplayService genreDisplayService, IMovieManageService movieManageService, IUploadImage uploadImage)
+            IGenreDisplayService genreDisplayService, IMovieManageService movieManageService, IUploadImage uploadImage,
+            IGenreManageService genreManageService, IGenreValidationService genreValidationService,
+            IRoomManageService roomManageService, IRoomValidationService roomValidationService)
         {
             this.screeningManageService = screeningManageService;
             this.roomDisplayService = roomDisplayService;
@@ -33,6 +39,10 @@ namespace CinemaApp.MVC.Controllers
             this.genreDisplayService = genreDisplayService;
             this.movieManageService = movieManageService;
             this.uploadImage = uploadImage;
+            this.genreManageService = genreManageService;
+            this.genreValidationService = genreValidationService;
+            this.roomManageService = roomManageService;
+            this.roomValidationService = roomValidationService;
         }
 
         // GET: Admin
@@ -98,6 +108,56 @@ namespace CinemaApp.MVC.Controllers
             return RedirectToAction("AddScreening");
 
 
+        }
+
+        public ActionResult AddGenre()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddGenre(AddGenreVM addGenreVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(addGenreVM);
+            }
+            else if (genreValidationService.IsNameExist(addGenreVM.Name))
+            {
+                ModelState.AddModelError("", "Istnieje już gatunek filmowy o podanej nazwie!");
+                return View(addGenreVM);
+            }
+            else
+            {
+                genreManageService.AddGenre(new AddGenreDTO(addGenreVM.Name));
+                return View();
+            }
+            
+        }
+
+        public ActionResult AddRoom()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddRoom(AddRoomVM addRoomVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(addRoomVM);
+            }
+            else if (roomValidationService.IsRoomNumberExist(addRoomVM.RoomNumber))
+            {
+                ModelState.AddModelError("", "Istnieje już sala o takim numerze!");
+                return View(addRoomVM);
+            }
+            else
+            {
+                roomManageService.AddRoom(new AddRoomDTO(addRoomVM.RoomNumber, addRoomVM.Capacity));
+                return View();
+            }
         }
     }
 }

@@ -1,0 +1,32 @@
+﻿@model CinemaApp.DTO.UserDetailsDTO
+
+@{
+    ViewBag.Title = "UserDetails";
+}
+
+<main>
+    <div class="container-fluid mx-0 px-0">
+        <div class="reserving-movie-image ">
+            <p class="display-1">Moje dane</p>
+        </div>
+    </div>
+    <div class="container d-flex justify-content-center mt-4">
+        <table class="table table-bordered w-100">
+            <tbody>
+                <tr>
+                    <th scope="row"><p>Adres emaill</p></th>
+                    <td style="width:50%"><p>@Html.DisplayFor(item => Model.EmailAddress)</p></td>
+                </tr>
+                <tr>
+                    <th scope="row"><p>Imie</p></th>
+                    <td style="width:50%"><p>@Html.DisplayFor(item => Model.FirstName)</p></td>
+                </tr>
+                <tr>
+                    <th scope="row"><p>Nazwisko</p></th>
+                    <td><p>@Html.DisplayFor(item => Model.LastName)</p></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>

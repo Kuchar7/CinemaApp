@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Web;
 
-namespace BLL
+namespace CinemaApp.MVC.ViewModels
 {
-    public class Class1
+    public class UserNavBarVM
     {
+
     }
 }

@@ -32,16 +32,21 @@ namespace CinemaApp.MVC.Controllers
             return View(movieDisplayService.GetMovieDetails(id));
         }
 
-        public ActionResult GetScreenings()
-        {
-            return View();
-        }
-
+  
         public JsonResult GetMovieTitle(string term)
         {
             IEnumerable<string> listOfMovieTitles = movieDisplayService.GetMovieTitleByParam(term);
             return Json(listOfMovieTitles, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetScreenings()
+        {
+            List<ScreeningDisplayDTO> screeningsList = new List<ScreeningDisplayDTO>(screeningDisplayService.GetScreening(DateTime.Now, DateTime.Now.AddHours(24)));
+
+
+            return View(screeningsList);
+        }
+
 
         [HttpPost]
         public ActionResult GetScreenings(string starteDateTime, string endDateTime, string movieTitle)

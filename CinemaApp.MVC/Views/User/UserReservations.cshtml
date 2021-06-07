@@ -1,0 +1,70 @@
+﻿@model IEnumerable<CinemaApp.DTO.UserReservationDTO>
+
+@{
+    ViewBag.Title = "UserReservations";
+}
+<main>
+    <div class="container-fluid mx-0 px-0">
+        <div class="reserving-movie-image ">
+            <p class="display-1">Moje Rezerwacje</p>
+        </div>
+    </div>
+    <div class="container">
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Film</th>
+                    <th scope="col">Początek</th>
+                    <th scope="col">Numer sali</th>
+                    <th scope="col">Cena</th>
+                    <th scope="col">Wybrane miejsca</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var r in Model)
+                {
+                    <tr>
+                        <th scrope="row">
+                            @r.ReservationId
+                        </th>
+                        <td>
+                            @r.MovieTitle
+                        </td>
+                        <td>
+                            @r.StartDateTime
+                        </td>
+                        <td>
+                            @r.RoomNumber
+                        </td>
+                        <td>
+                            @r.FullPrice
+                        </td>
+                        <td>
+                            @r.SeatNumbers
+                        </td>
+                        <td>
+                            @if (r.StatusId == 1)
+                            {
+                                <p>
+                                    Opłacono
+                                </p>
+                            }
+                            @if (r.StatusId == 2)
+                            {
+                                <p>
+                                    Nieopłacono
+                                </p>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+</main>

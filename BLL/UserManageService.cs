@@ -10,15 +10,15 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class CreateUserService : ICreateUserService
+    public class UserManageService : IUserManageService
     {
         private readonly DatabaseContext dbContext;
 
-        public CreateUserService()
+        public UserManageService()
         {
             dbContext = new DatabaseContext();
         }
-        public int CreateUser(CreateUserDTO createUserDTO)
+        public int AddUser(CreateUserDTO createUserDTO)
         {
             User user = new User
             {
@@ -34,6 +34,14 @@ namespace BLL
                 UserId = user.Id,
                 RoleId = 2
             };
+            return dbContext.SaveChanges();
+        }
+
+        public int EditUserData(EditUserDataDTO editUserDataDTO)
+        {
+            var user = dbContext.Users.First(x => x.Id == editUserDataDTO.UserId);
+            user.FirstName = editUserDataDTO.UserFirstName;
+            user.LastName = editUserDataDTO.UserLastName;
             return dbContext.SaveChanges();
         }
 

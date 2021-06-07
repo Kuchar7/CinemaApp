@@ -13,12 +13,12 @@ namespace CinemaApp.MVC.Controllers
     public class AccountController : Controller
     {
         private readonly IUserAuthenticationService userAuthentiactionService;
-        private readonly ICreateUserService createUserService;
+        private readonly IUserManageService userManageService;
 
-        public AccountController(IUserAuthenticationService userAuthentiactionService, ICreateUserService createUserService)
+        public AccountController(IUserAuthenticationService userAuthentiactionService, IUserManageService userManageService)
         {
             this.userAuthentiactionService = userAuthentiactionService;
-            this.createUserService = createUserService;
+            this.userManageService = userManageService;
         }
 
 
@@ -57,7 +57,7 @@ namespace CinemaApp.MVC.Controllers
                     Password = createUserVM.Password
                 };
 
-                createUserService.CreateUser(createUserDTO);
+                userManageService.AddUser(createUserDTO);
             }
             return View();
         }

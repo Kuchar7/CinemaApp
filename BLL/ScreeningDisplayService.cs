@@ -78,6 +78,33 @@ namespace BLL
             }
             return listScreeningDisplayDTO;
         }
+
+        public IEnumerable<ScreeningDisplayDTO> GetScreening(DateTime starteDateTime, DateTime endDateTime)
+        {
+            var query = from s in dbContext.Screenings
+                        where s.Start >= starteDateTime && s.Start <= endDateTime
+                        orderby s.Start
+                        select new
+                        {
+                            screeningId = s.Id,
+                            start = s.Start,
+                            roomNumber = s.Room.Number,
+                            movieTitle = s.Movie.Title,
+                            imgPath = s.Movie.ImgPath
+                        };
+            List<ScreeningDisplayDTO> listScreeningDisplayDTO = new List<ScreeningDisplayDTO>();
+            foreach (var s in query)
+            {
+                listScreeningDisplayDTO.Add(new ScreeningDisplayDTO
+                {
+                    Id = s.screeningId,
+                    ImgPath = s.imgPath,
+                    MovieTitle = s.movieTitle,
+                    Start = s.start,
+                    RoomNumber = s.roomNumber
+                });
+            }
+            return listScreeningDisplayDTO;
+        }
     }
 }
-//w tej klasie mam rózne metody wyszukujące po bazie danych zwracają albo obiekt albo liste obiektów

@@ -20,22 +20,22 @@ namespace BLL
         {
             var queryResult = from r in dbContext.Reservations
                               where r.UserId == userId
-                              //from m in dbContext.
                               select new
                               {
                                   r.Id,
                                   ReservationStatusId = r.ReservationStatus.Id,
-                                  ReservationStatusName = r.ReservationStatus.Name,
                                   Price = r.Price,
                                   RoomNumber = r.Screening.Room.Number,
                                   MovieTitle = r.Screening.Movie.Title,
-                                  r.Screening.Start
+                                  r.Screening.Start,
+                                  SeatNumbers = r.ReservedSeats.Where(x => x.ReservationId == r.Id).Select(x => x.Number).ToList()
                               };
+
             List<UserReservationDTO> userReservationDTOs = new List<UserReservationDTO>();
             foreach (var r in queryResult)
             {
-                userReservationDTOs.Add(new UserReservationDTO(r.Id, r.Price, r.ReservationStatusId,
-                    r.ReservationStatusName));
+                userReservationDTOs.Add(new UserReservationDTO(r.Id, r.MovieTitle, r.Start,
+                    r.Price, string.Join(", ", r.SeatNumbers), r.ReservationStatusId, r.RoomNumber));
             }
             return userReservationDTOs;
 

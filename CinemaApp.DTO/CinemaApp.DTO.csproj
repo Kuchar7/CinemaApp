@@ -41,7 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddGenreDTO.cs" />
     <Compile Include="AddMovieDTO.cs" />
+    <Compile Include="AddRoomDTO.cs" />
+    <Compile Include="EditUserDataDTO.cs" />
+    <Compile Include="UserDetailsDTO.cs" />
+    <Compile Include="UserReservationDTO.cs" />
     <Compile Include="GenreDTO.cs" />
     <Compile Include="AddScreaningMovieDTO.cs" />
     <Compile Include="AddScreeningDTO.cs" />
@@ -53,7 +58,6 @@
     <Compile Include="CreateUserDTO.cs" />
     <Compile Include="AddScreaningRoomDTO.cs" />
     <Compile Include="ScreeningDisplayDTO.cs" />
-    <Compile Include="UserReservationDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

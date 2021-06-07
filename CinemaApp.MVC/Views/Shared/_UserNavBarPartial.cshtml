@@ -1,0 +1,33 @@
+﻿@if (Request.IsAuthenticated)
+{
+
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle  mr-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            @User.Identity.Name
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            @if (User.IsInRole("Admin"))
+            {
+                <a class="dropdown-item" href="@Url.Action("AddScreening", "Admin")">Nowy seans</a>
+                <a class="dropdown-item" href="@Url.Action("AddMovie", "Admin")">Nowy film</a>
+                <a class="dropdown-item" href="@Url.Action("AddGenre", "Admin")">Nowy gatunek filmowy</a>
+                <a class="dropdown-item" href="@Url.Action("AddRoom", "Admin")">Nowa sala kinowa</a>
+                <a class="dropdown-item" href="@Url.Action("UserDetails", "User")">Moje dane</a>
+            }
+            else
+            {
+                <a class="dropdown-item" href="@Url.Action("UserReservations", "User")">Moje rezerwacje</a>
+                <a class="dropdown-item" href="@Url.Action("UserDetails", "User")">Moje dane</a>
+                <a class="dropdown-item" href="@Url.Action("EditUserData", "User")">Zmień dane</a>
+            }
+
+        </div>
+    </li>
+    <a class="nav-link mr-3" href="@Url.Action("Logout","Account")">Wyloguj</a>
+
+}
+else
+{
+    <a class="nav-link mr-3" id="home" href="@Url.Action("Login","Account")">Logowanie</a>
+    <a class="nav-link mr-3" id="home" href="@Url.Action("CreateAccount","Account")">Rejestracja</a>
+}

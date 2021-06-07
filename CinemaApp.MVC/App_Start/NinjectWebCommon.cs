@@ -50,7 +50,7 @@ namespace CinemaApp.MVC.App_Start
                 kernel.Bind<IReservationManageService>().To<ReservationManageService>();
                 kernel.Bind<IReservationDisplayService>().To<ReservationDisplayService>();
                 kernel.Bind<IUserAuthenticationService>().To<UserAuthenticationService>();
-                kernel.Bind<ICreateUserService>().To<CreateUserService>();
+                kernel.Bind<IUserManageService>().To<UserManageService>();
                 kernel.Bind<IScreeningDisplayService>().To<ScreeningDisplayService>();
                 kernel.Bind<IScreeningManageService>().To<ScreeningManageService>();
                 kernel.Bind<IRoomDisplayService>().To<RoomDisplayService>();
@@ -59,6 +59,11 @@ namespace CinemaApp.MVC.App_Start
                 kernel.Bind<IGenreDisplayService>().To<GenreDisplayService>();
                 kernel.Bind<IUploadImage>().To<UploadImage>();
                 kernel.Bind<IReservationValidationService>().To<ReservationValidationService>();
+                kernel.Bind<IUserDisplayService>().To<UserDisplayService>();
+                kernel.Bind<IGenreManageService>().To<GenreManageService>();
+                kernel.Bind<IGenreValidationService>().To<GenreValidationService>();
+                kernel.Bind<IRoomValidationService>().To<RoomValidationService>();
+                kernel.Bind<IRoomManageService>().To<RoomManageService>();
 
 
 

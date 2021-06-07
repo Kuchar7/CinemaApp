@@ -193,3 +193,13 @@ footer {
 #input-search-movie {
     width: 20rem !important;
 }
+
+.dropdown-item {
+    font-size: 1.3rem;
+}
+.bootstrap-select.form-control {
+    border: 1px solid #ced4da;
+}
+.bootstrap-select .dropdown-toggle .filter-option-inner-inner{
+    font-size: 1.25rem;
+}
