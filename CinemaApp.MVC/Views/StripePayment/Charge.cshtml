@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Charge";
+}
+
+<div class="d-flex justify-content-center row mt-5">
+    @using (Html.BeginForm("Index", "StripePayment", FormMethod.Post, new { @class = "row col-lg-12 col-xl-9 justify-content-center", @enctype = "multipart/form-data" }))
+    {
+        <article>
+            <label>Amount: $5.00</label>
+        </article>
+        <script src="//checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                data-key="@ViewBag.StripePublishKey"
+                data-locale="auto"
+                data-description="Sample Charge"
+                data-amount="500">
+        </script>
+
+    }
+</div>

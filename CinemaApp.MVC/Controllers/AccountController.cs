@@ -36,6 +36,7 @@ namespace CinemaApp.MVC.Controllers
 
         // POST: Account/CreateAccount
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateAccount(CreateUserVM createUserVM)
         {
             if (!ModelState.IsValid)
@@ -75,6 +76,7 @@ namespace CinemaApp.MVC.Controllers
         }
         // POST: Account/Login
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login (UserLoginVM userLoginVM)
         {
             if (!ModelState.IsValid)

@@ -11,6 +11,6 @@ namespace BLL
     public interface IReservationManageService
     {
         int AddReservation(AddReservationDTO reservationDTO);
-        //IEnumerable<SelectedSeat> GetSelectedSeat(int[] selectedSeats, int screeningId, int roomID);
+        int ChangeStatusToPaid(int reservationId);
     }
 }

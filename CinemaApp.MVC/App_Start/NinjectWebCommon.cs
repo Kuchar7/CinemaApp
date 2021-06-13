@@ -64,6 +64,8 @@ namespace CinemaApp.MVC.App_Start
                 kernel.Bind<IGenreValidationService>().To<GenreValidationService>();
                 kernel.Bind<IRoomValidationService>().To<RoomValidationService>();
                 kernel.Bind<IRoomManageService>().To<RoomManageService>();
+                kernel.Bind<IStripePayment>().To<StripePayment>();
+                kernel.Bind<IStripePaymentValidation>().To<StripePaymentValidation>();
 
 
 

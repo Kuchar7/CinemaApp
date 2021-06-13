@@ -8,9 +8,13 @@
         <div class="reserving-movie-image ">
             <p class="display-1">Moje Rezerwacje</p>
         </div>
+        @if(TempData["Failed"] != null || TempData["Success"] != null)
+        {
+            Html.RenderPartial("_PaymentAlertPartial");
+        }
     </div>
     <div class="container">
-        <table class="table table-bordered mt-3">
+        <table class="table table-bordered mt-3 text-center">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -51,11 +55,29 @@
                                     Opłacono
                                 </p>
                             }
-                            @if (r.StatusId == 2)
+                            @if (r.StatusId == 2 && r.StartDateTime < DateTime.Now)
                             {
                                 <p>
-                                    Nieopłacono
+                                    Nieopłacone
                                 </p>
+                            }
+                            @if (r.StatusId == 2 && r.StartDateTime >= DateTime.Now)
+                            {
+                                using (Html.BeginForm("StripeCharge", "User", FormMethod.Post, new { @class = "text-center", role = "form" }))
+
+                                {
+                                    <input name="reservationId" type="hidden" value="@r.ReservationId">
+                                    <button type="submit" class="btn btn-warning my-3 sbm">Opłać</button>
+                                    <script src="//checkout.stripe.com/v2/checkout.js"
+                                            class="stripe-button"
+                                            data-key="@ViewBag.StripePublishKey"
+                                            data-locale="pl"
+                                            data-currency="PLN"
+                                            data-description="@r.MovieTitle"
+                                            data-panelLabel="Zapłać"
+                                            data-amount="@r.FullPriceCents">
+                                    </script>
+                                }
                             }
                         </td>
                     </tr>

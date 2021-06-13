@@ -41,14 +41,11 @@ namespace BLL
             return dbContext.SaveChanges();
         }
 
-        //public IEnumerable<SelectedSeat> GetSelectedSeat(int[] selectedSeats, int screeningId, int roomID)
-        //{
-        //    List<SelectedSeat> seatsList = new List<SelectedSeat>();
-        //    foreach (var seat in selectedSeats)
-        //    {
-        //        seatsList.Add(new SelectedSeat(seat, roomID, screeningId));
-        //    }
-        //    return seatsList;
-        //}
+        public int ChangeStatusToPaid(int reservationId)
+        {
+            var reservation = dbContext.Reservations.Where(x => x.Id == reservationId).Single();
+            reservation.StatusId = 1;
+            return dbContext.SaveChanges();
+        }
     }
 }

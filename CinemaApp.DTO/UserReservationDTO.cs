@@ -18,6 +18,7 @@ namespace CinemaApp.DTO
             this.SeatNumbers = seatNumbers;
             this.StatusId = statusId;
             this.RoomNumber = roomNumber;
+            this.FullPriceCents = (fullPrice * 100);
         }
         public int ReservationId { get; set; }
         public string MovieTitle { get; set; }
@@ -26,6 +27,7 @@ namespace CinemaApp.DTO
         public decimal FullPrice { get; set; }
         public string SeatNumbers { get; set; }
         public int StatusId { get; set; }
+        public decimal FullPriceCents { get; }
 
 
 

@@ -12,7 +12,7 @@ using System.Web.Mvc;
 namespace CinemaApp.MVC.Controllers
 {
 
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         readonly IScreeningManageService screeningManageService;
@@ -117,6 +117,7 @@ namespace CinemaApp.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddGenre(AddGenreVM addGenreVM)
         {
             if (!ModelState.IsValid)
@@ -142,6 +143,7 @@ namespace CinemaApp.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddRoom(AddRoomVM addRoomVM)
         {
             if (!ModelState.IsValid)

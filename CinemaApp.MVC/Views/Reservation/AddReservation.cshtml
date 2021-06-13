@@ -12,7 +12,7 @@
     </div>
     <div class=" container" id="reservation-panel">
         <div class="row justify-content-around">
-            <div class="col-6">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                 <table class="table table-bordered">
 
                     <tbody>
@@ -40,17 +40,18 @@
                 </table>
 
             </div>
-            <div id="seats-picker" class=" col-6 bg-dark d-flex align-content-center justify-content-center row">
-                <p id="screen-position" class="mt-1">Ekran</p>
-                <div class="container ">
+            <div id="seats-picker" class=" col-12 col-sm-12 col-md-6 col-lg-6 bg-dark d-flex  justify-content-center row">
+                <p id="screen-position" class="mt-3">Ekran</p>
+                <div class="container align-content-center">
                     <div class="row justify-content-center " id="target">
                     </div>
                 </div>
             </div>
             <div class="ml-1 mt-1">
                 @Html.ValidationSummary(false, "", new { @class = "text-danger ml-5" })
+                <button id="sbm-reservation" class="btn btn-warning my-3 sbm" value="Zarezerwuj">Zarezerwuj</button>
             </div>
-            <button id="sbm-reservation" class="btn btn-warning my-3 sbm" value="Zarezerwuj">Zarezerwuj</button>
+            
         </div>
 
     </div>
@@ -62,10 +63,10 @@
 
 for (var i = 1; i <='@(Model.SeatsAmount)'; i++) {
     if (reservedSeats.includes(i) == true) {
-        $('#target').append('<div id="' + i + '" class="seat seat-reserved">' + i + '</div>')
+        $('#target').append('<div id="' + i + '" class="seat seat-reserved col-1 p-0">' + i + '</div>')
     }
     else {
-        $('#target').append('<div id="' + i + '" class="seat seat-free">' + i + '</div>')
+        $('#target').append('<div id="' + i + '" class="seat seat-free col-1 p-0">' + i + '</div>')
     }
     }
 

@@ -138,11 +138,11 @@ footer {
 
 
 #screen-position {
-    position: absolute;
     border-top: 1rem solid orange;
     color: orange;
-    width: 70%;
+    width: 100%;
     text-align: center;
+
 }
 
 #seats-picker {
@@ -164,7 +164,7 @@ footer {
 .seat {
     width: 3rem;
     height: 3rem;
-    margin: 0 1rem 1rem 0;
+    margin: 0 0.2rem 1.5rem 0;
     text-align: center;
     color: white;
     cursor: grab;
@@ -202,4 +202,10 @@ footer {
 }
 .bootstrap-select .dropdown-toggle .filter-option-inner-inner{
     font-size: 1.25rem;
+}
+.stripe-button-el {
+    display: none !important
+}
+#payment-alert-text{
+    font-size: 2rem;
 }
