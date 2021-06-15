@@ -6,6 +6,10 @@
         <div class="reserving-movie-image ">
             <p class="display-1">Nowy seans</p>
         </div>
+        @if(TempData != null)
+        {
+            Html.RenderPartial("_SuccessAlertPartial");
+        }
     </div>
 
 
@@ -57,7 +61,6 @@
                 <button type="submit" class="btn btn-warning my-3 sbm">Dodaj</button>
             </div>
             @Html.ValidationSummary("", new { @class = "text-danger" })
-            @*@Html.ValidationMessage("RoomAvailableError")*@
 
 
         }

@@ -5,6 +5,10 @@
         <div class="reserving-movie-image ">
             <p class="display-1">Nowa sala kinowa</p>
         </div>
+        @if (TempData != null)
+        {
+            Html.RenderPartial("_SuccessAlertPartial");
+        }
     </div>
 
 
@@ -30,7 +34,8 @@
                    @data_toggle = "tooltip",
                    @class = "form-control",
                    @title = "Numer sali",
-                   @Value = "0"
+                   @Value = "0",
+                   @min = "0"
 
 
                }
@@ -50,7 +55,8 @@
                    @data_toggle = "tooltip",
                    @class = "form-control",
                    @title = "Pojemnośc sali",
-                   @Value = "0"
+                   @Value = "0",
+                   @min = "0"
 
 
                }

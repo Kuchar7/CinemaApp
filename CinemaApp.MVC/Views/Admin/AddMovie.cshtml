@@ -9,6 +9,10 @@
         <div class="reserving-movie-image "> =
             <p class="display-1">Nowy film</p>
         </div>
+        @if(TempData != null)
+        {
+            Html.RenderPartial("_SuccessAlertPartial");
+        }
     </div>
 
     <div class="d-flex justify-content-center row mt-5">
@@ -37,7 +41,8 @@
                    @data_toggle = "tooltip",
                    @class = "form-control",
                    @title = "Czas trwania filmu w minutach",
-                   @id = "editorForLength"
+                   @id = "editorForLength",
+                   @min = "0"
 
 
                }

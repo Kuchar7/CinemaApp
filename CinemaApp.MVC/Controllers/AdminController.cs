@@ -46,10 +46,6 @@ namespace CinemaApp.MVC.Controllers
         }
 
         // GET: Admin
-        public ActionResult Index()
-        {
-            return View();
-        }
 
         public ActionResult AddMovie()
         {
@@ -74,6 +70,7 @@ namespace CinemaApp.MVC.Controllers
             AddMovieDTO addMovieDTO = new AddMovieDTO(addMovieVM.Title, addMovieVM.Length,
                 addMovieVM.ImgPath, addMovieVM.Description, addMovieVM.SelectedGenresId);
             movieManageService.AddMovie(addMovieDTO);
+            TempData["Success"] = "Dodano nowy film";
             return RedirectToAction("AddMovie");
         }
 
@@ -105,6 +102,7 @@ namespace CinemaApp.MVC.Controllers
             AddScreeningDTO addScreeningDTO = new AddScreeningDTO(addScreeningVM.Start, addScreeningVM.Price,
                 addScreeningVM.MovieId, addScreeningVM.RoomId);
             screeningManageService.AddScreening(addScreeningDTO);
+            TempData["Success"] = "Utworzono nowy seans";
             return RedirectToAction("AddScreening");
 
 
@@ -132,6 +130,7 @@ namespace CinemaApp.MVC.Controllers
             else
             {
                 genreManageService.AddGenre(new AddGenreDTO(addGenreVM.Name));
+                TempData["Success"] = "Dodano nowy gatunek filmowy";
                 return View();
             }
             
@@ -158,6 +157,7 @@ namespace CinemaApp.MVC.Controllers
             else
             {
                 roomManageService.AddRoom(new AddRoomDTO(addRoomVM.RoomNumber, addRoomVM.Capacity));
+                TempData["Success"] = "Utworzono nową sale";
                 return View();
             }
         }

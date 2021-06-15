@@ -5,6 +5,10 @@
         <div class="reserving-movie-image ">
             <p class="display-1">Nowy gatunek filmowy</p>
         </div>
+        @if (TempData != null)
+        {
+            Html.RenderPartial("_SuccessAlertPartial");
+        }
     </div>
 
 

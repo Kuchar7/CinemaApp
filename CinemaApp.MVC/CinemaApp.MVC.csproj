@@ -397,7 +397,7 @@
     <Content Include="Views\User\EditUserData.cshtml" />
     <Content Include="Views\StripePayment\Charge.cshtml" />
     <Content Include="Views\User\UserReservations.cshtml" />
-    <Content Include="Views\User\_PaymentAlertPartial.cshtml" />
+    <Content Include="Views\Shared\_SuccessAlertPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
