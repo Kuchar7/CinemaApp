@@ -64,6 +64,14 @@ namespace CinemaApp.MVC.Controllers
             return PartialView("_ScreeningListPartial", screeningsList);
 
         }
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
+        public ActionResult Contact()
+        {
+            return View();
+        }
 
     }
 }

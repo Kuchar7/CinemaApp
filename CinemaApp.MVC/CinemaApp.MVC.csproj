@@ -398,6 +398,7 @@
     <Content Include="Views\StripePayment\Charge.cshtml" />
     <Content Include="Views\User\UserReservations.cshtml" />
     <Content Include="Views\Shared\_SuccessAlertPartial.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
