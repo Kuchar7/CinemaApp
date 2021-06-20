@@ -181,6 +181,7 @@
     <Compile Include="ViewModels\CompositeClasses\Genre.cs" />
     <Compile Include="ViewModels\CompositeClasses\AddScreeningMovie.cs" />
     <Compile Include="ViewModels\CompositeClasses\AddScreeningRoom.cs" />
+    <Compile Include="ViewModels\ContactVM.cs" />
     <Compile Include="ViewModels\CreateUserVM.cs" />
     <Compile Include="ViewModels\AddReservationVM.cs" />
     <Compile Include="ViewModels\EditUserDataVM.cs" />
@@ -399,6 +400,7 @@
     <Content Include="Views\User\UserReservations.cshtml" />
     <Content Include="Views\Shared\_SuccessAlertPartial.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

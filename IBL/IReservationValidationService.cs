@@ -8,6 +8,7 @@ namespace IBL
 {
     public interface IReservationValidationService
     {
-        bool IsAvailable(IEnumerable<int> seats, int screeningId);
+        bool IsSeatsAvailable(IEnumerable<int> seats, int screeningId);
+        bool IsScreeningAvailable(int screeningId);
     }
 }

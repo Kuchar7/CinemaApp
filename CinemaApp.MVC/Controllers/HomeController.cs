@@ -1,4 +1,5 @@
 ﻿using CinemaApp.DTO;
+using CinemaApp.MVC.ViewModels;
 using IBL;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,16 @@ namespace CinemaApp.MVC.Controllers
         public ActionResult Contact()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult Contact(ContactVM contactVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            TempData["Success"] = "Wiadomość została wysłana";
+            return RedirectToAction("Contact");
         }
 
     }

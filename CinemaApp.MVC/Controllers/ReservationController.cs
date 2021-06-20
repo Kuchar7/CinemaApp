@@ -27,6 +27,10 @@ namespace CinemaApp.MVC.Controllers
         // GET: AddReservation
         public ActionResult AddReservation(int id)
         {
+            if (!reservationValidationService.IsScreeningAvailable(id))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             AddReservationVM addReservationVM = new AddReservationVM(reservationDisplayService.GetReservationByScreeningId(id));
             return View(addReservationVM);
         }
@@ -45,7 +49,7 @@ namespace CinemaApp.MVC.Controllers
             addReservationVM.ScreeningId = reservationInfo.ScreeningId;
             addReservationVM.ReservedSeatsList = reservationInfo.ReservedSeatsList;
             addReservationVM.ImgPath = reservationInfo.ImgPath;
-            if (!reservationValidationService.IsAvailable(addReservationVM.SelectedSeats, addReservationVM.ScreeningId))
+            if (!reservationValidationService.IsSeatsAvailable(addReservationVM.SelectedSeats, addReservationVM.ScreeningId))
             {
                 ModelState.AddModelError("", "Wybrane miejsca są już zajęte!");
                 return View(addReservationVM);
