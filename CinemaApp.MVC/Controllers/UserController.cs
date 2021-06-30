@@ -58,7 +58,6 @@ namespace CinemaApp.MVC.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult EditUserData(EditUserDataVM editUserDataVM)
         {
             if (!ModelState.IsValid)
@@ -75,7 +74,7 @@ namespace CinemaApp.MVC.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public ActionResult StripeCharge(string stripeToken, int reservationId)
         {
             Charge charge = stripePayment.CreateCharge(stripeToken, reservationId);

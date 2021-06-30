@@ -46,12 +46,14 @@
                     <div class="row justify-content-center " id="target">
                     </div>
                 </div>
+                <button id="seats-clear" class="btn btn-warning my-3 sbm" value="clear">Wyczyść</button>
             </div>
+
             <div class="ml-1 mt-1">
                 @Html.ValidationSummary(false, "", new { @class = "text-danger ml-5" })
                 <button id="sbm-reservation" class="btn btn-warning my-3 sbm" value="Zarezerwuj">Zarezerwuj</button>
             </div>
-            
+
         </div>
 
     </div>
@@ -75,7 +77,6 @@ for (var i = 1; i <='@(Model.SeatsAmount)'; i++) {
 
 
     var selectedSeats = [];
-
     $(".seat-free").click(function (e) {
         e.preventDefault();
         if (!selectedSeats.includes($(this).attr('id'))) {
@@ -90,26 +91,37 @@ for (var i = 1; i <='@(Model.SeatsAmount)'; i++) {
                 var d = document.getElementById("full-price").innerHTML = fullPrice + " zł";
             }
         }
-
     });
+    
 
 </script>
 
 
+<script>
+    $("#seats-clear").click(function (e) {
+        e.preventDefault();
+        $(".seat-free").css("background-color", "blue");
+        selectedSeats = [];
+        var d = document.getElementById("miejsca").innerHTML = "brak";
+        var d = document.getElementById("full-price").innerHTML = "0 zł";
+    });
+    
+</script>
+
 
 <script>
-    $("#sbm-reservation").click(function (e) {
-        e.preventDefault();
-        $.ajax({
-            url: '@Url.Action("AddReservation", "Reservation")',
-            type: "POST",
-            data: { selectedSeats: selectedSeats, Title: "@Model.Title"},
-            success: function (data) {
-                alert("sent data to controller")
-            },
-            error: function (data) {
-                alert("Error " + data.responseText);
-            }
+        $("#sbm-reservation").click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '@Url.Action("AddReservation", "Reservation")',
+                type: "POST",
+                data: { selectedSeats: selectedSeats, Title: "@Model.Title" },
+                success: function (data) {
+                    window.location.href = data.redirectToUrl;
+                },
+                error: function (data) {
+                    alert("Error " + data.responseText);
+                }
+            });
         });
-    });
 </script>

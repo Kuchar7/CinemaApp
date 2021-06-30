@@ -21,7 +21,7 @@ namespace CinemaApp.MVC.ViewModels
             this.RoomNumber = addReservationDTO.RoomNumber;
             this.ScreeningId = addReservationDTO.ScreeningId;
         }
-
+        public int Id { get; set; }
         public string UserEmail { get; set; }
         public string Title { get; set; }
         public string ImgPath { get; set; }

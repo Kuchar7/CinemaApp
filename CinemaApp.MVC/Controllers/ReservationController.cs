@@ -40,6 +40,7 @@ namespace CinemaApp.MVC.Controllers
         public ActionResult AddReservation(AddReservationVM addReservationVM, int id)
         {
             AddReservationDTO reservationInfo = reservationDisplayService.GetReservationByScreeningId(id);
+            addReservationVM.Id = id;
             addReservationVM.UserEmail = User.Identity.Name;
             addReservationVM.Title = reservationInfo.Title;
             addReservationVM.BasicPrice = reservationInfo.BasicPrice;
@@ -63,7 +64,7 @@ namespace CinemaApp.MVC.Controllers
             };
             reservationManageService.AddReservation(addReservationDTO);
 
-            return RedirectToAction("Index", "Home");
+            return Json(new { redirectToUrl = Url.Action("UserReservations", "User") });
         }
     }
 }
